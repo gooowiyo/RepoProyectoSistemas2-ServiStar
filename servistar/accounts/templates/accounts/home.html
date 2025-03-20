@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Admin</title>
+</head>
+<body>
+    <h1>Bienvenido Superusuario {{ user.username }}</h1>
+    <p>Esta página es solo para administradores.</p>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+</body>
+</html>
