@@ -8,7 +8,7 @@ class RegistroForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
     email = forms.EmailField(required=True)
-    rol = forms.ChoiceField(choices=Profile.ROLES)  # Usamos los roles del modelo Profile
+    rol = forms.ChoiceField(choices=Profile.ROLES)
 
     class Meta:
         model = User
