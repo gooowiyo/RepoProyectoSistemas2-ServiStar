@@ -23,7 +23,7 @@ def login_view(request):
                     return redirect('pagina_calidad')
         else:
             messages.error(request, 'Usuario o contraseña incorrectos')
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/login.html', {})
 
 def logout_view(request):
     logout(request)

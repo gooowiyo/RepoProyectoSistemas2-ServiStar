@@ -1,0 +1,40 @@
+/* Paleta de colores:
+   #CC2830 (rojo principal),
+   #CB2004 (rojo variante),
+   #A52A2A (marrón),
+   #F0ECEC (fondo claro),
+   #E8D5C3 (beige) */
+body {
+    background-color: #F0ECEC; /* Fondo general */
+    font-family: Arial, sans-serif;
+}
+
+.index-container {
+    margin-top: 100px;
+}
+
+.index-card {
+    background-color: #E8D5C3; /* Color beige */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.index-card h2 {
+    color: #CC2830; /* Rojo principal */
+    margin-bottom: 20px;
+}
+
+.index-card p {
+    color: #A52A2A; /* Marrón para texto */
+}
+
+.btn-custom {
+    background-color: #CC2830; /* Botón rojo */
+    color: #fff;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #CB2004; /* Otra variación de rojo */
+}
