@@ -1,0 +1,724 @@
+/* Paleta de colores:
+   #CC2830 (rojo principal),
+   #CB2004 (rojo variante),
+   #A52A2A (marrón),
+   #F0ECEC (fondo claro),
+   #E8D5C3 (beige) */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: var(--primary-color);
+    color: #CC2830;
+    padding: 20px;
+    text-align: center;
+}
+#chk1{
+    display: none;
+}
+
+.cabecera a{
+    font-size: 15px;
+    color: #CC2830;
+    text-shadow: 0 0 5px rgb(#CC2830),
+    0 0 10px rgb(#CC2830), 0 0 15px rgb(#CB2004),
+    0 0 30px rgb(#CB2004);
+}
+
+header .logotipo{
+    flex: 1;
+    color: #CB2004;
+    margin-left: 10px;
+}
+header .logotipo a {
+    font-size: 25px;
+}
+/* Estilo de la barra de búsqueda */
+header .barraBusqueda {
+    flex: 2;
+    position: relative;
+}
+.barraBusqueda img{
+    border: none;
+    position:absolute;
+    transform: scale(0.9);
+    top: -20px;
+    right: 0;
+    background-color: rgb(#E8D5C3);
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+
+}
+header ul{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+header ul li{
+    list-style: none;
+}
+header ul li a{
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 15px;
+}
+header .menu{
+    font-size: 2.5em;
+    display: none;
+}
+header .menu img{
+    border-radius:20%;
+    background-color: #E8D5C3;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+#chk1:checked ~ ul{
+    right: 0;
+}
+
+.portada {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Para contener el tamaño de los elementos hijos */
+    padding-top: 100px;
+    
+}
+
+  /* Estilo de la imagen dentro del div */
+.portada img {
+    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+    height: auto; /* Para mantener la proporción de la imagen */
+    opacity: 0.5;
+    display: block; /* Elimina el espacio extra debajo de la imagen */
+}
+.portada2{
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 50%; /* Puedes ajustar esto para posicionar el elemento verticalmente */
+    left: 50%; /* Puedes ajustar esto para posicionar el elemento horizontalmente */
+    transform: translate(-50%, -50%); /* Centra el elemento */
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    padding-top: 100px;
+}
+.portada2 h2{
+    padding: auto;
+    font-size: 40px;
+    color: rgba(#E8D5C3);
+    margin: 10px;
+}
+.portada2 a{
+    padding: auto;
+    font-size: 40px;
+    padding: 10px;
+    border-radius: 10%;
+    background-color: rgba(0, 0, 0, 0.655);
+    color: rgba(255, 255, 255, 0.586);
+    text-decoration: none;
+}
+.conciertos {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+div.concierto1 {
+    flex: 1;
+    text-align: center;
+    border-radius: 5%;
+    margin: 5px;
+    margin-bottom: 100px; /* Ajusta según tus necesidades */
+}
+div.concierto1 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    border: 3px solid black;
+    transition: 0.5s;
+}
+
+div.concierto2 {
+    flex: 1;
+    text-align: center;
+    border-radius: 20px;
+    border: 3px solid black;
+    transition: 0.5s;
+    background-color: #5e3c58;
+    font-family: Cooper Black;
+    color: white;
+    text-underline-offset: -10px;
+    margin: 20px;
+}
+
+div.concierto2 a {
+    color: white;
+
+    text-decoration: none;
+}
+
+
+
+@keyframes resaltarProducto {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes deformacion3D {
+    0% {
+        transform: perspective(500px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(500px) rotateX(40deg) rotateY(30deg);
+    }
+    100% {
+        transform: perspective(500px) rotateX(0deg) rotateY(0deg);
+    }
+}
+
+div.concierto1 img:hover,
+.servicio2 img:hover,
+div.concierto2:hover,
+div.producto2:hover,
+div.producto1 img:hover {
+    animation: resaltarProducto 1s ease infinite, deformacion3D 1s linear;
+    transform: scale(1.2);
+    border: 3px solid #925d88;
+    border-radius: 30%;
+    background-color: #8f4582;
+}
+.servicio {    
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    justify-content: space-around;
+    margin: 10px;
+    background-color: black;
+}
+.servicio1 {
+    flex: 1;
+    text-align: center;
+    border-radius: 5%;
+    margin-bottom: 10px;
+}
+.servicio1 h3{
+    background-color: black;
+    color: white;
+    width: 100%;
+}
+.servicio2{
+    flex: 1;
+    text-align: center;
+}
+.servicio2 img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    border: 3px solid rgb(255, 255, 255);
+    transition: 0.5s;
+    padding:  10px;
+}
+h1::first-letter {
+    font-size: 55px;
+    color: darkgray;
+    font-family: Cooper Black;
+}
+
+footer {
+    padding: 5px;
+}
+footer a {
+    color: #E8D5C3;
+}
+div.infoUs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+
+}
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+hr{
+    width: 100%;
+}
+.redes{
+
+    max-width: 300px;
+    width: 100%;
+    margin: 10px;
+
+}
+div.infoUs img {
+    margin-right: 5px;
+    width: 100%;
+    height: 100%;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+
+}
+
+div.infoUs2 {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 40px;
+
+
+}
+div h2{
+    color: rgb(0, 0, 0);
+    padding: 10px 0;
+    text-shadow: 0 0 5px rgb(179, 124, 196),
+    0 0 10px rgb(222, 122, 202), 0 0 15px rgb(178, 124, 192),
+    0 0 30px rgb(240, 159, 230);
+}
+div.infoUs2 div{
+    display: flex;
+    flex-direction: column;
+
+}
+.contactUs a{    
+    color: rgb(188, 188, 188);   
+    margin-bottom: 10px;
+
+    text-shadow: 0 0 5px rgb(121, 35, 131),
+    0 0 10px rgb(255, 5, 209), 0 0 15px rgb(132, 25, 134),
+    0 0 30px rgb(255, 0, 234);
+
+}
+a{
+
+    text-decoration: none;
+}
+a:hover{    
+    text-decoration: underline;
+}
+div.infoUs3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(21, 21, 21);
+    color: #838383;
+    margin: 20px 0 0;
+    padding: 20px;
+}
+
+
+.h2Ayuda{
+    text-align: center;
+    font-size: 175%;
+    padding-top: 60px;
+}
+.h2Ayuda div{
+    text-align: center;
+    padding: 2%;
+
+}
+.divAyudaSuperior{
+    margin: 1.5%;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(3, 0, 0, 0.681);
+}
+
+.h2Tendencia{
+    text-align: left;
+    margin-left: 10%;
+    font-size: 175%;
+}
+.conciertosTendencia {
+    display: column;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    justify-content: space-around;
+    margin: 10px;
+}
+.liOpcAyuda{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.liOpcAyuda .textoAyuda{
+    margin: 10px;
+    width: 900px;
+    font-size: 20px;
+    height: auto;
+    
+}
+.additional-info{
+    width: 700px;
+    font-size: 20px;
+    height: auto;
+    display: none;
+    background: radial-gradient(at 5px, #A52A2A, rgb(225, 154, 229));
+    padding: 10px;
+    border-radius: 15px;
+   
+}
+
+    
+#linksAdicionales{
+    background: radial-gradient(at 20px 20px, #A52A2A, rgb(33, 3, 34));
+    /*background-color:rgb(225, 183, 178);*/
+    border-radius: 15px;
+    padding: 10px;
+    transition: 0.5s;
+    cursor: pointer; 
+    color: #A52A2A;
+    text-shadow: 0 0 5px rgb(109, 35, 131),
+    0 0 10px rgb(255, 255, 255), 0 0 15px rgb(112, 25, 134),
+    0 0 30px rgb(255, 255, 255);
+}
+#linksAdicionales:hover{
+    background: radial-gradient(at 20px 20px, #7e5b7e, rgb(37, 3, 38));
+    color: #f0f0f0;
+    text-shadow: 0 0 5px rgb(109, 35, 131),
+    0 0 10px rgb(233, 58, 198), 0 0 15px rgb(112, 25, 134),
+    0 0 30px rgb(219, 54, 197);
+}
+
+
+
+
+/* Estilos de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+  /* Estilos del 'pulgar' de la barra de desplazamiento (la parte que puedes arrastrar) */
+::-webkit-scrollbar-thumb {
+    background-color: #691f66; /* Color del 'pulgar' */
+    border-radius: 20px;
+    transition: 0.5s;
+
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #9e469b;
+}
+  /* Estilos de la 'pista' de la barra de desplazamiento (la parte que no se puede arrastrar) */
+::-webkit-scrollbar-track {
+    background-color: rgba(241, 241, 241, 0.145); /* Color de la 'pista' */
+    border-radius: 20px;
+}
+
+
+
+.superOferta{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+    position: relative;
+    overflow-x: scroll; 
+    scroll-behavior: smooth;    
+    padding: 10px;
+    width: auto;
+    height: auto;
+}
+.superOfertaTexto{
+    background-color: black;
+    margin-top: 100px;
+    text-align: center;
+    padding: 10px;
+    font-family: cooper;
+    font-size: 60px;
+    color: rgb(234, 208, 255);
+    letter-spacing: 10px;
+    text-shadow: 0 0 5px rgb(109, 35, 131),
+    0 0 10px rgb(255, 5, 234), 0 0 15px rgb(81, 25, 134),
+    0 0 30px rgb(255, 0, 221);
+}
+.superOferta1 img{  
+    background-color: rgb(255, 255, 255);
+    margin: 20px;
+    transition: 0.5s;
+    width: 350px;
+    height: 350px;
+}
+.precio {
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: line-through;
+}
+.superOferta1 p{  
+    background-color: #A52A2A;
+    margin: 0 50px;
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+    width: auto;
+}
+.superOferta1 button{
+    border: none;
+    background-color: #8c347c;
+    border-radius: 20px;
+    margin: 10px;
+    color: white;
+    padding: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+    font-size: 20px;
+    
+
+}
+.superOferta1 button:hover{
+    background-color: #420938;
+
+}
+.superOferta1 img:hover{
+    transform: scale(0.8);
+    border-radius: 20px;
+}
+.superOferta .arrow{
+    width: 46px;
+    height: 46px;    
+    cursor: pointer;
+    text-align: center;
+    object-fit: cover;
+    font-size: 1.2em;
+    line-height: 46px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    transition: 0.5s;
+
+}
+.superOferta .arrow:hover{
+    background-color: rgb(157, 157, 157);
+}
+.superOferta .left{
+    left: 0;
+    top: 50%;    
+    transform: translateY(-50%, -50%);    
+}
+.superOferta .right{
+    right: 0;
+    top: 50%;    
+    transform: translateY(-50%, -50%);    
+}
+.superOferta .arrow:first-child{
+    left: -23px;
+}
+.superOferta .arrow:last-child{
+    right: -23px;
+}
+.left{
+    transform: rotate(90deg); /* Puedes ajustar el ángulo según tus necesidades */
+}
+.right{
+    transform: rotate(-90deg); /* Puedes ajustar el ángulo según tus necesidades */
+}
+Header .logotipo a::before{
+    content: "Servistar"; /* Texto completo por defecto */
+}
+#ctn-bars-search{   
+    position: fixed;
+    top: -200px;
+    right: 0;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    color: white;   
+    z-index: 8;
+    
+    transition: all 600ms;
+}
+
+#chk2{
+    display: none;
+}
+#ctn-bars-search input{
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #f2f2f2;
+    border-radius: 30px;
+    color: gray;
+    font-size: 12px;
+    text-align: center;
+    margin: auto;
+}
+.dropdown-list {
+
+    list-style: none;
+    display: none;
+    position: absolute;
+    border: 1px solid #ccc;
+    width: 100%;
+    background-color: #0b0b0b;
+    opacity: 0;
+    z-index: 8;
+    top: 50px;
+
+
+}
+#chk2:checked ~ #ctn-bars-search{
+    top: 100px;
+}
+#box-search li a{
+    display: block;
+    width: 100%;
+    color: white;
+    padding: 10px 20px;
+}
+#box-search li a:hover{
+    background-color: black;
+}
+
+#box-search li{
+    display: none;
+}
+
+#box-search li.show{
+    display: block;
+}
+#inputSearch:focus ~ .dropdown-list{
+    display: block;
+    opacity: 0.7;
+
+}
+#box-search li a:last-child {
+    border-bottom: none;
+}
+
+
+.liOpcAyuda {
+    list-style: none;
+}
+#chk3, #chk4, #chk5, #chk6, #chk7{
+    display: none;
+}
+#chk3:checked ~ #comprarTicketsInfo {
+    display: block;
+}
+#chk4:checked ~ #vendeEventoInfo{
+    display: block;
+}
+#chk5:checked ~ #resenhaInfo{
+    display: block;
+}
+#chk6:checked ~ #compraProductoInfo{
+    display: block;
+}
+#chk7:checked ~ #cart-container{
+    display: block;
+}
+#chk7:checked ~ .modal-overlay{
+    display: block;
+}
+
+
+.cart-btn{
+    width: 60px;
+    height: 60px;
+
+}
+.cart-btn img{
+    position: fixed;
+    transform: scale(0.9);
+    background-color: rgb(255, 255, 255);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    right: 10px;
+    bottom: 10px;
+    z-index: 11;
+    transition: 0.5s;
+}
+.cart-btn img:hover{
+    background-color: rgb(121, 52, 127);
+    width: 65px;
+    height: 65px;
+}
+
+#cart-container{
+    position: fixed;
+    background-color: white;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-height: 400px; 
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: none; 
+    border-radius: 20px;
+    font-weight: bolder;
+    
+}
+.modal-overlay{
+    background-color: rgba(0, 0, 0, 0.479);
+    z-index: 9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+#cart-container h2{
+    text-align: center;
+    
+}
+
+#payment-method,
+#cart-container button {
+    border: 3px solid black;
+    background-color: rgb(255, 151, 246);
+    margin: 4px;
+    padding: 2px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: bold;
+    color: rgb(78, 17, 83);
+    height: 50px;
+    font-size: 15px;
+    
+}
+#cart-container button:hover {
+    background-color: rgb(172, 26, 182);
+    color: white;
+}
+#cart-container button img{
+    width:20px;
+    height:20px;
+}
