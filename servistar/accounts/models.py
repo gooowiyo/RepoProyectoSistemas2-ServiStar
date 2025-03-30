@@ -50,30 +50,79 @@ class OrdenServicio(models.Model):
 
     # Revisión Técnica
     cambio_aceite = models.BooleanField(default=False)
+    cambio_aceite_notas = models.CharField(max_length=200, blank=True)
+
     revision_nivelesLiquidos = models.BooleanField(default=False)
+    revision_nivelesLiquidos_notas = models.CharField(max_length=200, blank=True)
+
     lavado = models.BooleanField(default=False)
+    lavado_notas = models.CharField(max_length=200, blank=True)
+
     engrase = models.BooleanField(default=False)
+    engrase_notas = models.CharField(max_length=200, blank=True)
+
     motor = models.BooleanField(default=False)
+    motor_notas = models.CharField(max_length=200, blank=True)
+
     afinado_motor = models.BooleanField(default=False)
+    afinado_motor_notas = models.CharField(max_length=200, blank=True)
+
     revision_frenos = models.BooleanField(default=False)
+    revision_frenos_notas = models.CharField(max_length=200, blank=True)
+
     revision_embrague = models.BooleanField(default=False)
+    revision_embrague_notas = models.CharField(max_length=200, blank=True)
+
     revision_transmision = models.BooleanField(default=False)
+    revision_transmision_notas = models.CharField(max_length=200, blank=True)
+
     revision_diferencial = models.BooleanField(default=False)
+    revision_diferencial_notas = models.CharField(max_length=200, blank=True)
+
     revision_crucetas = models.BooleanField(default=False)
+    revision_crucetas_notas = models.CharField(max_length=200, blank=True)
+
     revision_suspensionDelantera = models.BooleanField(default=False)
+    revision_suspensionDelantera_notas = models.CharField(max_length=200, blank=True)
+
     revision_suspensionTrasera = models.BooleanField(default=False)
+    revision_suspensionTrasera_notas = models.CharField(max_length=200, blank=True)
+
     revision_amortiguadores = models.BooleanField(default=False)
+    revision_amortiguadores_notas = models.CharField(max_length=200, blank=True)
+
     revision_sistemasDireccion = models.BooleanField(default=False)
+    revision_sistemasDireccion_notas = models.CharField(max_length=200, blank=True)
+
     revision_rodamientosRuedas = models.BooleanField(default=False)
+    revision_rodamientosRuedas_notas = models.CharField(max_length=200, blank=True)
+
     revision_sistemaElectrico = models.BooleanField(default=False)
+    revision_sistemaElectrico_notas = models.CharField(max_length=200, blank=True)
+
     alineado = models.BooleanField(default=False)
+    alineado_notas = models.CharField(max_length=200, blank=True)
+
     balanceado = models.BooleanField(default=False)
+    balanceado_notas = models.CharField(max_length=200, blank=True)
+
     rotacion = models.BooleanField(default=False)
+    rotacion_notas = models.CharField(max_length=200, blank=True)
+
     alineado_faroles = models.BooleanField(default=False)
+    alineado_faroles_notas = models.CharField(max_length=200, blank=True)
+
     ajuste_interior = models.BooleanField(default=False)
+    ajuste_interior_notas = models.CharField(max_length=200, blank=True)
+
     ajuste_carroceria = models.BooleanField(default=False)
+    ajuste_carroceria_notas = models.CharField(max_length=200, blank=True)
+
     revision_ruido = models.BooleanField(default=False)
-    otros = models.CharField(blank=True, max_length=500, verbose_name='Otros')
+    revision_ruido_notas = models.CharField(max_length=200, blank=True)
+
+    otros = models.BooleanField(default=False)
+    otros_notas = models.CharField(max_length=200, blank=True)
     
 
     # Inventario de Recepcion
