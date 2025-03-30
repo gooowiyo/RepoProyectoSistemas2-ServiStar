@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.utils import timezone
 from .models import Profile
+from .forms import OrdenServicioForm
 
 def login_view(request):
     if request.method == 'POST':
@@ -49,10 +51,28 @@ def home_view(request):
     return render(request, 'accounts/home.html')
 
 def pagina_asesor_view(request):
-    return render(request, 'accounts/pagina_asesor.html')
+    if request.method == 'POST':
+        form = OrdenServicioForm(request.POST)
+        if form.is_valid():
+            orden = form.save(commit=False)
+            orden.asesor = request.user
+            orden.recepcion_fecha = timezone.now().date()
+            orden.recepcion_hora = timezone.now().time()
+            orden.save()
+            return redirect('pagina_asesor')
+    else:
+        form = OrdenServicioForm()  
+    
+    return render(request, 'accounts/pagina_asesor.html', {'form': form})
 
 def pagina_mecanico_view(request):
     return render(request, 'accounts/pagina_mecanico.html')
 
 def pagina_calidad_view(request):
     return render(request, 'accounts/pagina_calidad.html')
+
+def pagina_administracion_view(request):
+    return render(request, 'accounts/pagina_administracion.html')
+
+def pagina_bodega_view(request):
+    return render(request, 'accounts/pagina_bodega.html')

@@ -1,11 +1,253 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Página de Asesoramiento</title>
+    <title>Asesor de Servicio - Nueva Orden</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .seccion { margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        h1 { color: #333; }
+        h2 { color: #555; margin-top: 0; }
+        .campo { margin-bottom: 15px; }
+        .campo label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .campo input, .campo textarea, .campo select { 
+            width: 100%; 
+            padding: 8px; 
+            box-sizing: border-box; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+        .checkbox-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .checkbox-group label { display: flex; align-items: center; }
+        .checkbox-group input[type="checkbox"] { width: auto; margin-right: 10px; }
+        button { 
+            background-color: #4CAF50; 
+            color: white; 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 16px; 
+        }
+        button:hover { background-color: #45a049; }
+
+        .fila-horizontal {
+            display: flex;
+            gap: 15px;  /* Espacio entre campos */
+            margin-bottom: 15px;  /* Espacio debajo de la fila */
+        }
+        .campo {
+            flex: 1;  /* Ocupa el mismo ancho */
+        }
+
+        .otros-horizontal {
+            display: flex;
+            gap: 15px;
+        }
+
+        .campo input,
+        .campo select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #cccc;
+            border-radius: 4px;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Bienvenido Empleado de Asesoramiento {{ user.first_name }}</h1>
-    <p>Aquí irán las funciones específicas para Asesoramiento.</p>
-    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+    <h1>Nueva Orden de Servicio</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Sección 1: Datos del Cliente -->
+        <div class="seccion">
+            <h2>Datos del Cliente y Vehículo</h2>
+            <div class="fila-horizontal">
+                <div class="campo">
+                    {{ form.cliente_nombre.label_tag }}
+                    {{ form.cliente_nombre }}
+                </div>
+                <div class="campo">
+                    {{ form.cliente_direccion.label_tag }}
+                    {{ form.cliente_direccion }}
+                </div>
+            </div>    
+
+            <div class="fila-horizontal">
+                <div class="campo">
+                    {{ form.cliente_telefono.label_tag }}
+                    {{ form.cliente_telefono }}
+                </div>
+                <div class="campo">
+                    {{ form.cliente_celular.label_tag }}
+                    {{ form.cliente_celular }}
+                </div>
+                <div class="campo">
+                    {{ form.cliente_email.label_tag }}
+                    {{ form.cliente_email }}
+                </div>
+            </div>
+
+            <div class="fila-horizontal">
+                <div class="campo">
+                    {{ form.vehiculo_marca.label_tag }}
+                    {{ form.vehiculo_marca }}
+                </div>
+                <div class="campo">
+                    {{ form.vehiculo_modelo.label_tag }}
+                    {{ form.vehiculo_modelo }}
+                </div>
+                <div class="campo">
+                    {{ form.vehiculo_tipo.label_tag }}
+                    {{ form.vehiculo_tipo }}
+                </div>
+                <div class="campo">
+                    {{ form.vehiculo_placa.label_tag }}
+                    {{ form.vehiculo_placa }}
+                </div>
+                <div class="campo">
+                    {{ form.vehiculo_color.label_tag }}
+                    {{ form.vehiculo_color }}
+                </div>
+            </div>
+
+            <div class="fila-horizontal">
+                <div class="campo">
+                    {{ form.vehiculo_kilometraje.label_tag }}
+                    {{ form.vehiculo_kilometraje }}
+                </div>            
+                <div class="campo">
+                    {{ form.vehiculo_chasis.label_tag }}
+                    {{ form.vehiculo_chasis }}
+                </div>
+                <div class="campo">
+                    {{ form.vehiculo_motor.label_tag }}
+                    {{ form.vehiculo_motor }}
+                </div>
+                <div class="campo">
+                    {{ form.vehiculo_proforma.label_tag }}
+                    {{ form.vehiculo_proforma }}
+                </div>
+            </div>
+            
+            <div class="fila-horizontal">
+                <div class="campo">
+                    {{ form.recepcion_fecha.label_tag }}
+                    {{ form.recepcion_fecha }}
+                </div>
+                <div class="campo">
+                    {{ form.recepcion_hora.label_tag }}
+                    {{ form.recepcion_hora }}
+                </div>
+            </div>
+            
+            <div class="fila-horizontal">
+                <div class="campo">
+                    {{ form.cliente_lugarEntrega.label_tag }}
+                    {{ form.cliente_lugarEntrega }}
+                </div>
+                <div class="campo">
+                    {{ form.cliente_fechaEntrega.label_tag }}
+                    {{ form.cliente_fechaEntrega }}
+                </div>
+                <div class="campo">
+                    {{ form.cliente_horaEntrega.label_tag }}
+                    {{ form.cliente_horaEntrega }}
+                </div>
+            </div>            
+        </div>
+
+        <!-- Sección 2: Revisión Técnica -->
+        <div class="seccion">
+            <h2>Revisión Técnica</h2>
+            <div class="checkbox-group">
+                <label>{{ form.cambio_aceite }} Cambio de Aceite</label>
+                <label>{{ form.revision_nivelesLiquidos }} Rev. de Niveles de Liquidos y Fluidos</label>
+                <label>{{ form.lavado }} Lavado</label>
+                <label>{{ form.engrase }} Engrase</label>
+                <label>{{ form.motor }} Motor</label>
+                <label>{{ form.afinado_motor }} Afinado de Motor</label>
+                <label>{{ form.revision_frenos }} Rev. Frenos</label>
+                <label>{{ form.revision_embrague }} Rev. Embrague</label>
+                <label>{{ form.revision_transmision }} Rev. Transmision</label>
+                <label>{{ form.revision_diferencial }} Rev. Diferencial</label>
+                <label>{{ form.revision_crucetas }} Rev. Crucetas</label>
+                <label>{{ form.revision_suspensionDelantera }} Rev. Suspension Delantera</label>
+                <label>{{ form.revision_suspensionTrasera }} Rev. Suspension Trasera</label>
+                <label>{{ form.revision_amortiguadores }} Rev. Amortiguadores</label>
+                <label>{{ form.revision_sistemasDireccion }} Rev. Sistema de Direccion</label>
+                <label>{{ form.revision_rodamientosRuedas }} Rev. Rodamientos de Ruedas</label>
+                <label>{{ form.revision_sistemaElectrico }} Rev. Sistema Electrico</label>
+                <label>{{ form.alineado }} Alineado</label>
+                <label>{{ form.balanceado }} Balanceado</label>
+                <label>{{ form.rotacion }} Rotacion</label>
+                <label>{{ form.alineado_faroles }} Alineado de Faroles</label>
+                <label>{{ form.ajuste_interior }} Ajuste de Interior</label>
+                <label>{{ form.ajuste_carroceria }} Ajuste de Carroceria</label>
+                <label>{{ form.revision_ruido }} Rev. de Ruido</label>
+            </div>
+
+            <div class="otros-horizontal">
+                <div class="campo">
+                    {{ form.otros.label_tag }}
+                    {{ form.otros }}
+                </div>
+            </div> 
+        </div>
+
+        <!-- Seccion 3: Inventario de Recepcion -->
+        <div class="seccion">
+            <h2>Inventario de Recepcion</h2>
+            <div class="checkbox-group">
+                <label>{{ form.limpiaparabrisas }} Limpiaparabrisas</label>
+                <label>{{ form.radio }} Radio</label>
+                <label>{{ form.toca_cintas }} Toca Cintas</label>
+                <label>{{ form.gomas_pedales }} Gomas Pedales</label>
+                <label>{{ form.sobrepisos }} Sobrepisos</label>
+                <label>{{ form.luz_techo_interior }} Luz Techo Interior</label>
+                <label>{{ form.perillas_seguros }} Perillas Seguros</label>
+                <label>{{ form.encendedor }} Encendedor</label>
+                <label>{{ form.manivelas_puertas }} Manivelas Puertas</label>
+                <label>{{ form.estuche_herramientas }} Estuche Herramientas</label>
+                <label>{{ form.espejo_interior }} Espejo Interior</label>
+                <label>{{ form.vidrios_parabrisas }} Vidrios Parabrisas</label>
+                <label>{{ form.manual_propietario }} Manual Propietario</label>
+                <label>{{ form.tapas_tanque_agua }} Tapas Tanque de Agua</label>
+                <label>{{ form.tapa_radiador }} Tapa Radiador</label>
+                <label>{{ form.biseles_delanteros }} Biseles Delanteros</label>
+                <label>{{ form.vidrios_laterales }} Vidrios Laterales</label>
+                <label>{{ form.antena }} Antena</label>
+                <label>{{ form.biseles_traseros }} Biseles Traseros</label>
+                <label>{{ form.tapa_ruedas_cubos }} Tapa Ruedas/Cubos</label>
+                <label>{{ form.espejos_exteriores }} Espejos Exteriores</label>
+                <label>{{ form.emblemas }} Emblemas</label>
+                <label>{{ form.guiñadores_delanteros }} Guiñadores Delanteros</label>
+                <label>{{ form.tapa_tanque_combustible }} Tapa Tanque Combustible</label>
+                <label>{{ form.faroles_delanteros }} Faroles Delanteros</label>
+                <label>{{ form.guiñadores_laterales }} Guiñadores Laterales</label>
+                <label>{{ form.vidrio_trasero }} Vidrio Trasero</label>
+                <label>{{ form.linterna }} Linterna</label>
+                <label>{{ form.gato }} Gato</label>
+                <label>{{ form.palanqueta }} Palanqueta</label>
+                <label>{{ form.limpia_parabrisas_trasero }} Limpia Parabrisas Trasero</label>
+                <label>{{ form.llanta_auxilio }} Llanta de Auxilio</label>
+                <label>{{ form.funda_llanta_auxilio }} Funda de Llanta de Auxilio</label>
+                <label>{{ form.faros_stops }} Faros Stops</label>
+                <label>{{ form.vidrios_trasero }} Vidrios Trasero</label>
+            </div>
+        </div>
+
+        <!-- Sección 4: Observaciones -->
+        <div class="seccion">
+            <h2>Observaciones</h2>
+            <div class="campo">
+                {{ form.observaciones.label_tag }}
+                {{ form.observaciones }}
+            </div>
+        </div>
+
+        <button type="submit">Guardar Orden</button>
+    </form>
 </body>
 </html>
