@@ -1,98 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asesor de Servicio - Nueva Orden</title>
+    <link rel="stylesheet" href="{% static 'taller/css/Asesor.css' %}">
+
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .seccion { margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
-        h1 { color: #333; }
-        h2 { color: #555; margin-top: 0; }
-        .campo { margin-bottom: 15px; }
-        .campo label { display: block; font-weight: bold; margin-bottom: 5px; }
-        .campo input, .campo textarea, .campo select { 
-            width: 100%; 
-            padding: 8px; 
-            box-sizing: border-box; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
+        body {
+            background: url('{% static "accounts/images/login_bg.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
         }
-        .checkbox-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .checkbox-group label { display: flex; align-items: center; }
-        .checkbox-group input[type="checkbox"] { width: auto; margin-right: 10px; }
-        button { 
-            background-color: #4CAF50; 
-            color: white; 
-            padding: 10px 15px; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-size: 16px; 
-        }
-        button:hover { background-color: #45a049; }
-
-        .fila-horizontal {
-            display: flex;
-            gap: 15px;  /* Espacio entre campos */
-            margin-bottom: 15px;  /* Espacio debajo de la fila */
-        }
-        .campo {
-            flex: 1;  /* Ocupa el mismo ancho */
-        }
-
-        .otros-horizontal {
-            display: flex;
-            gap: 15px;
-        }
-
-        .campo input,
-        .campo select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #cccc;
-            border-radius: 4px;
-        }
-
-        .revision-section {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .revision-item {
-            display: flex;
-            align-items: center;  /* Alinea verticalmente */
-            gap: 8px;  /* Espacio uniforme entre elementos */
-            margin-bottom: 10px;
-            background: #f5f5f5;
-            padding: 8px;
-            border-radius: 4px;
-        }
-
-        .revision-checkbox {
-            margin-right: 15px;
-            transform: scale(1.2);
-        }
-
-        .revision-label {
-            flex: 1;
-            min-width: 120px;  /* Ancho mínimo para los labels */
-            font-weight: normal;
-        }
-
-        .revision-notes {
-            flex: 2;
-            margin-left: 0;
-            width: 10px;
-        }
-
-        .revision-notes input {
-            width: 95%;
-            padding: 5px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            font-size: 14px;
-            margin-left: 0;
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(240, 236, 237, 0.01);
+            z-index: -1;
         }
     </style>
 </head>
@@ -205,7 +135,6 @@
             <div class="revision-section">
                 <!-- Columna Izquierda -->
                 <div>
-                    <!-- Item 1 -->
                     <div class="revision-item">
                         {{ form.cambio_aceite }}
                         <label for="{{ form.cambio_aceite.id_for_label }}" class="revision-label">Cambio de Aceite</label>
@@ -214,7 +143,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 2 -->
                     <div class="revision-item">
                         {{ form.revision_nivelesLiquidos }}
                         <label for="{{ form.revision_nivelesLiquidos.id_for_label }}" class="revision-label">Rev. Niveles Líquidos</label>
@@ -223,7 +151,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 3 -->
                     <div class="revision-item">
                         {{ form.lavado }}
                         <label for="{{ form.lavado.id_for_label }}" class="revision-label">Lavado</label>
@@ -232,7 +159,6 @@
                         </div>
                     </div>
                     
-                    <!-- Continúa con los demás items de la columna izquierda -->
                     <div class="revision-item">
                         {{ form.engrase }}
                         <label for="{{ form.engrase.id_for_label }}" class="revision-label">Engrase</label>
@@ -256,11 +182,7 @@
                             <input type="text" name="afinado_notas" placeholder="Notas">
                         </div>
                     </div>
-                </div>
-        
-                <!-- Columna Derecha -->
-                <div>
-                    <!-- Item 1 -->
+
                     <div class="revision-item">
                         {{ form.revision_frenos }}
                         <label for="{{ form.revision_frenos.id_for_label }}" class="revision-label">Rev. Frenos</label>
@@ -268,8 +190,7 @@
                             <input type="text" name="frenos_notas" placeholder="Notas">
                         </div>
                     </div>
-                    
-                    <!-- Item 2 -->
+
                     <div class="revision-item">
                         {{ form.revision_embrague }}
                         <label for="{{ form.revision_embrague.id_for_label }}" class="revision-label">Rev. Embrague</label>
@@ -277,8 +198,7 @@
                             <input type="text" name="embrague_notas" placeholder="Notas">
                         </div>
                     </div>
-                    
-                    <!-- Continúa con los demás items de la columna derecha -->
+
                     <div class="revision-item">
                         {{ form.revision_transmision }}
                         <label for="{{ form.revision_transmision.id_for_label }}" class="revision-label">Rev. Transmisión</label>
@@ -286,7 +206,7 @@
                             <input type="text" name="transmision_notas" placeholder="Notas">
                         </div>
                     </div>
-                    
+
                     <div class="revision-item">
                         {{ form.revision_diferencial }}
                         <label for="{{ form.revision_diferencial.id_for_label }}" class="revision-label">Rev. Diferencial</label>
@@ -294,7 +214,7 @@
                             <input type="text" name="diferencial_notas" placeholder="Notas">
                         </div>
                     </div>
-                    
+
                     <div class="revision-item">
                         {{ form.revision_crucetas }}
                         <label for="{{ form.revision_crucetas.id_for_label }}" class="revision-label">Rev. Crucetas</label>
@@ -302,12 +222,119 @@
                             <input type="text" name="crucetas_notas" placeholder="Notas">
                         </div>
                     </div>
-                    
+
                     <div class="revision-item">
                         {{ form.revision_suspensionDelantera }}
                         <label for="{{ form.revision_suspensionDelantera.id_for_label }}" class="revision-label">Rev. Suspensión Del.</label>
                         <div class="revision-notes">
                             <input type="text" name="suspension_del_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.otros }}
+                        <label for="{{ form.otros.id_for_label }}" class="revision-label">Otros</label>
+                        <div class="revision-notes">
+                            <input type="text" name="otros_notas" placeholder="Notas">
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Columna Derecha -->
+                <div>                    
+                    <div class="revision-item">
+                        {{ form.revision_suspensionTrasera }}
+                        <label for="{{ form.revision_suspensionTrasera.id_for_label }}" class="revision-label">Rev. Suspension Trasera</label>
+                        <div class="revision-notes">
+                            <input type="text" name="suspension_tra_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.revision_amortiguadores }}
+                        <label for="{{ form.revision_amortiguadores.id_for_label }}" class="revision-label">Rev. Amortiguadores</label>
+                        <div class="revision-notes">
+                            <input type="text" name="amortiguadores_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.revision_sistemasDireccion }}
+                        <label for="{{ form.revision_sistemasDireccion.id_for_label }}" class="revision-label">Rev. Sistemas de Direccion</label>
+                        <div class="revision-notes">
+                            <input type="text" name="direccion_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.revision_rodamientosRuedas }}
+                        <label for="{{ form.revision_rodamientosRuedas.id_for_label }}" class="revision-label">Rev. Rodamientos de Ruedas</label>
+                        <div class="revision-notes">
+                            <input type="text" name="rodamientos_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.revision_sistemaElectrico }}
+                        <label for="{{ form.revision_sistemaElectrico.id_for_label }}" class="revision-label">Rev. Sistema Electrico</label>
+                        <div class="revision-notes">
+                            <input type="text" name="sistema_elec_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.alineado }}
+                        <label for="{{ form.alineado.id_for_label }}" class="revision-label">Alineado</label>
+                        <div class="revision-notes">
+                            <input type="text" name="alineado_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.balanceado }}
+                        <label for="{{ form.balanceado.id_for_label }}" class="revision-label">Balanceado</label>
+                        <div class="revision-notes">
+                            <input type="text" name="balanceado_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.rotacion }}
+                        <label for="{{ form.rotacion.id_for_label }}" class="revision-label">Rotacion</label>
+                        <div class="revision-notes">
+                            <input type="text" name="rotacion_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.alineado_faroles }}
+                        <label for="{{ form.alineado_faroles.id_for_label }}" class="revision-label">Alineado de Faroles</label>
+                        <div class="revision-notes">
+                            <input type="text" name="alineado_faroles_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.ajuste_interior }}
+                        <label for="{{ form.ajuste_interior.id_for_label }}" class="revision-label">Ajuste de Interior</label>
+                        <div class="revision-notes">
+                            <input type="text" name="ajus_interior_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.ajuste_carroceria }}
+                        <label for="{{ form.ajuste_carroceria.id_for_label }}" class="revision-label">Ajuste de Carroceria</label>
+                        <div class="revision-notes">
+                            <input type="text" name="ajus_carroceria_notas" placeholder="Notas">
+                        </div>
+                    </div>
+
+                    <div class="revision-item">
+                        {{ form.revision_ruido }}
+                        <label for="{{ form.revision_ruido.id_for_label }}" class="revision-label">Rev. Ruido</label>
+                        <div class="revision-notes">
+                            <input type="text" name="ruido_notas" placeholder="Notas">
                         </div>
                     </div>
                 </div> 

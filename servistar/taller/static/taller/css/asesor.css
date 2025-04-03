@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #F0ECED;
+    color: #333;
+}
+
+.seccion {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #A52A2A;
+    border-radius: 5px;
+    background-color: #E8D5C3;
+}
+
+h1 {
+    color: #E8D5C3;
+    border-bottom: 2px solid #E8D5C3;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #A52A2A;
+    margin-top: 0;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #A52A2A;
+}
+
+.campo input, .campo textarea, .campo select {
+    width: 100%;
+    font-size: 17px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #A52A2A;
+    border-radius: 4px;
+    background-color: #F0ECED;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    color: #A52A2A;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #CC2830;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #CB2004;
+}
+
+.fila-horizontal {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.campo {
+    flex: 1;
+}
+
+.revision-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.revision-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    background: #F0ECED;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #A52A2A;
+}
+
+.revision-checkbox {
+    margin-right: 15px;
+    transform: scale(1.2);
+}
+
+.revision-label {
+    flex: 1;
+    min-width: 120px;
+    font-weight: normal;
+    color: #A52A2A;
+}
+
+.revision-notes input {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #A52A2A;
+    border-radius: 3px;
+    font-size: 14px;
+    flex: 2;
+    margin-left: 0;
+    background-color: #F0ECED;
+}
+
+/* Estilos para los campos de fecha y hora */
+input[type="date"], input[type="time"] {
+    background-color: #F0ECED;
+    border: 1px solid #A52A2A;
+}
+
+/* Efecto de foco en los campos */
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid #CB2004;
+    background-color: white;
+}

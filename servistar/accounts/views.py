@@ -2,9 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.utils import timezone
 from .models import Profile
-from .forms import OrdenServicioForm
 
 def login_view(request):
     if request.method == 'POST':
@@ -14,15 +12,19 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user.is_superuser:
-                return redirect('home')
+                return redirect('taller:home')
             else:
                 perfil = Profile.objects.get(user=user)
                 if perfil.rol == 'asesor':
-                    return redirect('pagina_asesor')
+                    return redirect('taller:pagina_asesor')
                 elif perfil.rol == 'mecanico':
-                    return redirect('pagina_mecanico')
+                    return redirect('taller:pagina_mecanico')
                 elif perfil.rol == 'calidad':
-                    return redirect('pagina_calidad')
+                    return redirect('taller:pagina_calidad')
+                elif perfil.rol == 'administracion':
+                    return redirect('taller:pagina_administracion')
+                elif perfil.rol == 'bodega':
+                    return redirect('taller:pagina_bodega')
         else:
             messages.error(request, 'Usuario o contraseña incorrectos')
     return render(request, 'accounts/login.html')
@@ -45,34 +47,3 @@ def registro_view(request):
     else:
         form = RegistroForm()
     return render(request, 'accounts/registro.html', {'form': form})
-
-#Paginas para los roles
-def home_view(request):
-    return render(request, 'accounts/home.html')
-
-def pagina_asesor_view(request):
-    if request.method == 'POST':
-        form = OrdenServicioForm(request.POST)
-        if form.is_valid():
-            orden = form.save(commit=False)
-            orden.asesor = request.user
-            orden.recepcion_fecha = timezone.now().date()
-            orden.recepcion_hora = timezone.now().time()
-            orden.save()
-            return redirect('pagina_asesor')
-    else:
-        form = OrdenServicioForm()  
-    
-    return render(request, 'accounts/pagina_asesor.html', {'form': form})
-
-def pagina_mecanico_view(request):
-    return render(request, 'accounts/pagina_mecanico.html')
-
-def pagina_calidad_view(request):
-    return render(request, 'accounts/pagina_calidad.html')
-
-def pagina_administracion_view(request):
-    return render(request, 'accounts/pagina_administracion.html')
-
-def pagina_bodega_view(request):
-    return render(request, 'accounts/pagina_bodega.html')
